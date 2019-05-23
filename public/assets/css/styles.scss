@@ -1,0 +1,10 @@
+
+.form-card {
+    margin: 50px auto 0;
+}
+
+.custom-file-input:lang(ru) {
+    ~ .custom-file-label {
+        content: 'Обзор';
+    }
+}
