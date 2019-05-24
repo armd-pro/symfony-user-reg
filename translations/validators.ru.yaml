@@ -1,2 +1,5 @@
 "password.min-length": "Ваш пароль должен быть не менее {{ limit }} символов"
 "password.empty": "Пожалуйста, введите пароль"
+
+"There is already an account with this email":
+    "Аккаунт с такой электронной почтой уже существует"
