@@ -20,8 +20,14 @@
                                 {{ 'Language'|trans({}, 'messages') }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Русский</a>
-                                <a class="dropdown-item active" href="#">English</a>
+                                {% for locale in locales %}
+                                    {% set lang = locale|trans({}, 'messages', locale) %}
+                                    {% if app.request.locale == locale %}
+                                        <span class="dropdown-item active">{{ lang }}</span>
+                                    {% else %}
+                                        <a href="#" class="dropdown-item">{{ lang }}</a>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </li>
                     </ul>
