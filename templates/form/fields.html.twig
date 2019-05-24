@@ -1,0 +1,40 @@
+{% use 'bootstrap_4_layout.html.twig' %}
+
+{% block file_widget %}
+    {% spaceless %}
+        {{ parent() }}
+        <script>
+            (function(){
+                let fieeld = document.querySelector('#{{ form.vars.id }}'),
+                    label = fieeld.parentNode.querySelector('label[for="{{ form.vars.id }}"]');
+                fieeld.addEventListener('change', () => {
+                    label.innerText = fieeld.files.length > 0 ? fieeld.files[0].name : '';
+                }, false);
+            })();
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{% block image_widget %}
+    {% spaceless %}
+        {{ block('file_widget') }}
+        <script>
+            (function(){
+
+                let fieeld = document.querySelector('#{{ form.vars.id }}'),
+                    label = fieeld.parentNode.querySelector('label[for="{{ form.vars.id }}"]'),
+                    isImage = function(file){
+                        return /^image\/(jpeg|gif|png)$/.test(file.type);
+                    };
+
+                fieeld.addEventListener('change', () => {
+                    if(fieeld.files.length && !isImage(fieeld.files[0])) {
+                        label.innerText = fieeld.value = '';
+                        alert('Это не изображение!');
+                    }
+                }, false);
+
+            })();
+        </script>
+    {% endspaceless %}
+{% endblock %}

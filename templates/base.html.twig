@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="{{ asset('assets/node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
         {% block stylesheets %}{% endblock %}
+        <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     </head>
     <body>
         <div class="container">
@@ -24,8 +26,6 @@
             </nav>
             {% block body %}{% endblock %}
         </div>
-        <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

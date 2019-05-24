@@ -1,5 +1,29 @@
 version: '2.0'
 services:
+
+    php-cli:
+        container_name: symfony.php-cli
+        command: ["./bin/console", "server:run", "0.0.0.0:80"]
+        build: .
+        ports:
+            - "8082:80"
+        volumes:
+            - ./:/var/www/user-registration
+        links:
+            - mysql:db
+        depends_on:
+            - mysql
+
+    phpmyadmin:
+        container_name: symfony.phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8085:80"
+        links:
+            - mysql:db
+        depends_on:
+            - mysql
+
     mysql:
         container_name: symfony.mysql
         image: mysql:5.7
@@ -12,21 +36,3 @@ services:
             - MYSQL_PASSWORD=12345
             - MYSQL_DATABASE=users
             - MYSQL_USER=users
-
-    symfony:
-        container_name: symfony
-        build: .
-        ports:
-            - "8082:80"
-        volumes:
-            - ./:/var/www/user-registration
-        links:
-            - mysql
-
-    phpmyadmin:
-        container_name: symfony.phpmyadmin
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - "8085:80"
-        links:
-            - mysql:db

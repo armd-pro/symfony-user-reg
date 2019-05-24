@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Form\Type\ImageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,8 +47,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Name'
             ])
 
-            ->add('photo', FileType::class, [
-                'label' => 'Photo'
+            ->add('photo', ImageType::class, [
+
             ])
 
             ->add('submit-btn', SubmitType::class, [

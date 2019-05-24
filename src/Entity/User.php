@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -31,6 +33,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
+     *
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 600,
+     *     minHeight = 200,
+     *     maxHeight = 600
+     * )
      */
     private $photo;
 
@@ -89,7 +98,7 @@ class User implements UserInterface
         return $this->photo;
     }
 
-    public function setPhoto($photo): self
+    public function setPhoto(File $photo = null): self
     {
         $this->photo = $photo;
 
@@ -101,11 +110,7 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return array_unique(array_merge(['ROLE_USER'], $this->roles));
     }
 
     public function setRoles(array $roles): self
@@ -144,6 +149,6 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        // $this->password = null;
     }
 }
