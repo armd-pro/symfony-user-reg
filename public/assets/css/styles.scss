@@ -8,3 +8,11 @@
         content: 'Обзор';
     }
 }
+
+.spinner-border {
+    vertical-align: middle;
+}
+
+.btn + .spinner-border {
+    margin-left: 8px;
+}
