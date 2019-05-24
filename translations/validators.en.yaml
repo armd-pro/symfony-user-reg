@@ -1,2 +1,3 @@
-"password.min-length": "Your password should be at least {{ limit }} characters"
-"password.empty": "Please enter a password"
+"password.min-length": "Your password should be at least {{ limit }} characters."
+"password.match": "The password fields must match."
+"password.empty": "Please enter a password."
