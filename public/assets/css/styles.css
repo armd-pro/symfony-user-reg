@@ -1,2 +1,2 @@
-﻿.form-card{margin:50px auto 0}.custom-file-input:lang(ru) ~ .custom-file-label{content:'Обзор'}.spinner-border{vertical-align:middle}.btn+.spinner-border{margin-left:8px}
+﻿.form-card{margin:50px auto 0}.custom-file-input:lang(ru) ~ .custom-file-label::after{content:'Обзор'}.spinner-border{vertical-align:middle}.btn+.spinner-border{margin-left:8px}
 /*# sourceMappingURL=styles.css.map */

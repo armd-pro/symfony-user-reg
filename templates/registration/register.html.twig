@@ -1,63 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{ 'Register'|trans({}, 'messages') }}{% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="card col-6 form-card">
             <div class="card-body">
-                <h3 class="card-title">Register</h3>
-                {{ form_start(registrationForm, {attr: {autocomplete: 'off'}}) }}
-                {{ form_row(registrationForm.name) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.password) }}
-                {{ form_end(registrationForm) }}
+                <h3 class="card-title">{{ 'Register'|trans({}, 'messages') }}</h3>
+                {{ include('form/registration.html.twig') }}
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-
-        $(function(){
-
-            var formSelector = 'form[name=registration_form]';
-
-            (function formInit($form){
-
-                $form.on('input change', '.is-invalid', function(){
-                    $(this).removeClass('is-invalid').closest('.form-group').find('.invalid-feedback').remove();
-                });
-
-                var $btn = $('.btn', $form);
-
-                $form.submit(function(e){
-
-                    e.preventDefault();
-                    var form = this;
-
-                    var $spiner = $('<div class="spinner-border text-primary" />').insertAfter($btn);
-                    $btn.prop('disabled', true);
-
-                    $.ajax({
-                        url: form.action,
-                        type: form.method,
-                        contentType: false,
-                        data: new FormData(form),
-                        processData: false,
-                        success: function (resp) {
-                            formInit($(formSelector, resp).replaceAll($form));
-                            $btn.prop('disabled', false);
-                            $spiner.remove();
-                        }
-                    });
-
-                });
-
-            })($(formSelector))
-
-        })
-
-    </script>
+    <script src="{{ asset('assets/js/registration-form.js') }}"></script>
 {% endblock %}

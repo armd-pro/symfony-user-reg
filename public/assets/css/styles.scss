@@ -4,7 +4,7 @@
 }
 
 .custom-file-input:lang(ru) {
-    ~ .custom-file-label {
+    ~ .custom-file-label::after {
         content: 'Обзор';
     }
 }

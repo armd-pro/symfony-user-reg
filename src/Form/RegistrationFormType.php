@@ -30,13 +30,12 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
 
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'password.empty',
                     ]),
 
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'password.min-length',
                         'max' => 4096,
                     ]),
 
@@ -52,7 +51,7 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('submit-btn', SubmitType::class, [
-                'label' => 'Register'
+                'label' => 'Send'
             ])
         ;
     }
@@ -61,6 +60,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'translation_domain' => 'registration-form'
         ]);
     }
 }

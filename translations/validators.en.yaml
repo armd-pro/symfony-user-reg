@@ -1,0 +1,2 @@
+"password.min-length": "Your password should be at least {{ limit }} characters"
+"password.empty": "Please enter a password"
