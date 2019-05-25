@@ -1,6 +1,14 @@
 
 # Symfony user registration example
 
+* [Requirements](#requirements)
+* [Instalation Instruction](#instalation-instruction)
+* [Other](#other)
+    * [Access to mysql shell](access-to-mysql-shell)
+    * [Access to mysql shell from outside](access-to-mysql-shell-from-outside)
+    * [Create database dump](create-database-dump)
+    * [Helper utils](helper-utils)
+
 ### Requirements
 * [docker](https://docs.docker.com/install/)
 * [docker-compose](https://docs.docker.com/compose/install/)
