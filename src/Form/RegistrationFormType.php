@@ -59,9 +59,14 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Photo',
                 'constraints' => [
                     new Assert\Image([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png',
+                        ],
                         'minWidth'  => 200,
-                        'maxWidth'  => 600,
                         'minHeight' => 200,
+                        'maxWidth'  => 600,
                         'maxHeight' => 600
                     ]),
                 ]
