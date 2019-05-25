@@ -8,7 +8,7 @@
 
 #### Step 1: Clone repo
 ```bash
-git clone git@github.com:armd-pro/symfony-user-reg.git project-name
+git clone https://github.com/armd-pro/symfony-user-reg.git project-name
 ```
 
 #### Step 2: Build
