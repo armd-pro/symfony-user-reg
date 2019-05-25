@@ -82,7 +82,7 @@ class RegistrationController extends AbstractController
 
         if($photo)
         {
-            $dir = $this->getParameter('kernel.project_dir') . '/public/images';
+            $dir = $this->getParameter('kernel.project_dir') . '/public/images/users';
             $ext = explode('/', $photo->getClientMimeType())[1];
             $fileName = md5(uniqid(rand(), 1)) . ".$ext";
             $photo->move($dir, $fileName);
