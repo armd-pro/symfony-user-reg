@@ -2,7 +2,8 @@
 # Symfony user registration example
 
 ### Requirements
-* [Docker](https://www.docker.com/)
+* [docker](https://docs.docker.com/install/)
+* [docker-compose](https://docs.docker.com/compose/install/)
 
 ### Instalation Instruction
 
