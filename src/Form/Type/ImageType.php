@@ -20,7 +20,7 @@ class ImageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'label' => 'Photo',
+            'label' => 'Image',
             'attr' => [
                 'accept' => 'image/*'
             ]
