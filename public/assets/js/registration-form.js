@@ -24,8 +24,26 @@ $(function(){
                 contentType: false,
                 data: new FormData(form),
                 processData: false,
-                success: function (registrationForm) {
-                    formInit($(registrationForm).replaceAll($form));
+                success: function (resp)
+                {
+                    if(!resp.success)
+                    {
+                        $('.is-invalid', resp.form).each(function(i, field){
+
+                            var $row = $(field).closest('.form-group').replaceAll(
+                                $('#' + field.id, $form).closest('.form-group')
+                            );
+
+                            if(field.type === 'password') {
+                                $row.next().find('[type=password]').val('');
+                            }
+                        });
+                    }
+                    else
+                    {
+                        formInit($(resp.form).replaceAll($form));
+                    }
+
                     $btn.prop('disabled', false);
                     $spiner.remove();
                 }

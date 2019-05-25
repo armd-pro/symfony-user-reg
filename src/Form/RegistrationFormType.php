@@ -5,14 +5,9 @@ namespace App\Form;
 use App\Entity\User;
 use App\Form\Type\ImageType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type as FormField;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -29,15 +24,15 @@ class RegistrationFormType extends AbstractType
     {
         $builder
 
-            ->add('name', TextType::class, [
+            ->add('name', FormField\TextType::class, [
                 'label' => 'Name'
             ])
 
-            ->add('email', EmailType::class)
+            ->add('email', FormField\EmailType::class)
 
-            ->add('password', RepeatedType::class, [
+            ->add('password', FormField\RepeatedType::class, [
 
-                'type' => PasswordType::class,
+                'type' => FormField\PasswordType::class,
                 'mapped' => false,
 
                 'invalid_message' => 'password.match',
@@ -46,11 +41,11 @@ class RegistrationFormType extends AbstractType
 
                 'constraints' => [
 
-                    new NotBlank([
+                    new Assert\NotBlank([
                         'message' => 'password.empty',
                     ]),
 
-                    new Length([
+                    new Assert\Length([
                         'min' => 6,
                         'minMessage' => 'password.min-length',
                         'max' => 4096,
@@ -61,10 +56,18 @@ class RegistrationFormType extends AbstractType
 
             ->add('photo', ImageType::class, [
                 'required' => false,
-                'label' => 'Photo'
+                'label' => 'Photo',
+                'constraints' => [
+                    new Assert\Image([
+                        'minWidth'  => 200,
+                        'maxWidth'  => 600,
+                        'minHeight' => 200,
+                        'maxHeight' => 600
+                    ]),
+                ]
             ])
 
-            ->add('submit-btn', SubmitType::class, [
+            ->add('submit-btn', FormField\SubmitType::class, [
                 'label' => 'Send'
             ])
         ;

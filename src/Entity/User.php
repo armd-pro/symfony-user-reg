@@ -7,7 +7,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -34,13 +33,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 600,
-     *     minHeight = 200,
-     *     maxHeight = 600
-     * )
      */
     private $photo;
 
@@ -99,13 +91,8 @@ class User implements UserInterface
         return $this->photo;
     }
 
-    public function setPhoto(File $photo = null): self
+    public function setPhoto(string $photo = null): self
     {
-        if($photo instanceof UploadedFile)
-        {
-
-        }
-
         $this->photo = $photo;
 
         return $this;
@@ -157,4 +144,6 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->password = null;
     }
+
+
 }

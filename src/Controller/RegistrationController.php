@@ -6,6 +6,8 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,9 +58,12 @@ class RegistrationController extends AbstractController
             $success = true;
         }
 
-        return $this->render('form/registration-form.html.twig', [
-            'registrationForm' => $form->createView(),
-            'success' => $success
+        return JsonResponse::create([
+            'success' => $success,
+            'form' => $this->renderView('form/registration-form.html.twig', [
+                'registrationForm' => $form->createView(),
+                'success' => $success
+            ])
         ]);
     }
 
@@ -71,6 +76,18 @@ class RegistrationController extends AbstractController
     {
         $pass = $passwordEncoder->encodePassword($user, $form->get('password')->getData());
         $user->setPassword($pass);
+
+        /** @var UploadedFile|null $photo */
+        $photo = $form->get('photo')->getData();
+
+        if($photo)
+        {
+            $dir = $this->getParameter('kernel.project_dir') . '/public/images';
+            $ext = explode('/', $photo->getClientMimeType())[1];
+            $fileName = md5(uniqid(rand(), 1)) . ".$ext";
+            $photo->move($dir, $fileName);
+            $user->setPhoto($fileName);
+        }
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
