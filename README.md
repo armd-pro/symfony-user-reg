@@ -9,12 +9,12 @@
 
 #### Step 1: Clone repo
 ```bash
-git clone https://github.com/armd-pro/symfony-user-reg.git project-name
+git clone https://github.com/armd-pro/symfony-user-reg.git
 ```
 
 #### Step 2: Build
 ```bash
-cd project-name
+cd symfony-user-reg
 docker-compose up --build -d
 ```
 
