@@ -15,7 +15,7 @@ git clone https://github.com/armd-pro/symfony-user-reg.git project-name
 #### Step 2: Build
 ```bash
 cd project-name
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 #### Step 3: Composer requirements
