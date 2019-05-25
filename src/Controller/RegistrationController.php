@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
         }
 
         if($form->isValid()) {
-            $this->userAdd($user, $form, $passwordEncoder);
+            $this->handleForm($form, $user, $passwordEncoder);
             $form = $this->createForm(RegistrationFormType::class, new User());
             $success = true;
         }
@@ -68,11 +68,11 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @param User $user
      * @param FormInterface $form
+     * @param User $user
      * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    protected function userAdd(User $user, FormInterface $form, UserPasswordEncoderInterface $passwordEncoder)
+    protected function handleForm(FormInterface $form, User $user, UserPasswordEncoderInterface $passwordEncoder)
     {
         $pass = $passwordEncoder->encodePassword($user, $form->get('password')->getData());
         $user->setPassword($pass);
