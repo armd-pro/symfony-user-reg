@@ -45,6 +45,11 @@ docker exec symfony.php-cli php bin/console doctrine:migrations:migrate --no-int
 docker exec -it symfony.mysql mysql -uroot -p12345 users
 ```
 
+#### Access to mysql shell from outside
+```bash
+mysql -h 127.0.0.1 -P 3307 -uroot -p12345
+```
+
 #### Create database dump
 ```bash
 docker exec -it symfony.mysql mysqldump -uroot -p12345 users > /path/to/users.db.sql
