@@ -43,7 +43,7 @@ docker exec symfony.php-cli php bin/console doctrine:migrations:migrate --no-int
 
 #### Step 6: Open in browser
 * site url: http://localhost:8082/register
-* phpmyadmin: http://localhost:8085
+* phpMyAdmin: http://localhost:8085
 
 
 ## Other
