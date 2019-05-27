@@ -7,7 +7,6 @@
     * [Access to mysql shell](#access-to-mysql-shell)
     * [Access to mysql shell from outside](#access-to-mysql-shell-from-outside)
     * [Create database dump](#create-database-dump)
-    * [Helper utils](#helper-utils)
 
 ### Requirements
 * [docker](https://docs.docker.com/install/)
