@@ -62,10 +62,3 @@ mysql -h 127.0.0.1 -P 3307 -uroot -p12345
 ```bash
 docker exec -it symfony.mysql mysqldump -uroot -p12345 users > /path/to/users.db.sql
 ```
-
-#### Helper utils
-```bash
-docker/stop.sh
-docker/start.sh
-docker/restart.sh
-```
