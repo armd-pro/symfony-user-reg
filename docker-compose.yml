@@ -8,7 +8,7 @@ services:
         ports:
             - "8082:80"
         volumes:
-            - ./:/var/www/user-registration
+            - ./:/var/www
         links:
             - mysql:db
         depends_on:
