@@ -25,7 +25,17 @@ cd symfony-user-reg
 docker-compose up --build -d
 ```
 
-#### Step 3: Database migration
+#### Step 3: Composer requirements
+```bash
+docker exec symfony.php-cli composer install
+```
+
+#### Step 4: JavaScript requirements
+```bash
+docker exec symfony.php-cli npm install
+```
+
+#### Step 5: Database migration
 ```bash
 docker exec symfony.php-cli php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
 ```
