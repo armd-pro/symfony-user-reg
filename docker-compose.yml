@@ -16,7 +16,7 @@ services:
             - mysql
 
     composer:
-        container_name: user-reg.composer
+        container_name: symfony.composer
         image: composer:latest
         volumes:
             - ./www:/var/www
