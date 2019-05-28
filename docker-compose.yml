@@ -19,7 +19,7 @@ services:
         container_name: symfony.composer
         image: composer:latest
         volumes:
-            - ./www:/var/www
+            - ./www:/app
         command: composer install
 
     phpmyadmin:
