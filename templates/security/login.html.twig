@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="card col-6 form-card">
+            <div class="card-body">
+                <h3 class="card-title">{{ 'Please sign in'|trans({}, 'messages') }}</h3>
+                {{ include('form/auth-form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

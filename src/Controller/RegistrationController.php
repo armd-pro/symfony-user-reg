@@ -25,11 +25,11 @@ class RegistrationController extends AbstractController
      * @Route("/", name="home")
      *
      * @param Request $request
-     * @return RedirectResponse
+     * @return Response
      */
     public function home(Request $request)
     {
-        return $this->redirectToRoute('app_register');
+        return $this->render('home/index.html.twig');
     }
 
     /**
