@@ -48,8 +48,9 @@ services:
     node:
         container_name: symfony.node
         image: "node:8"
+        user: node
         environment:
             - NODE_ENV=dev
         volumes:
-            - ./:/var/www
+            - ./:/home/node/app
         command: "npm install"
